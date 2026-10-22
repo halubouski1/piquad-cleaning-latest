@@ -458,3 +458,11 @@ input:focus,select:focus,textarea:focus{border-color:var(--ink)}
 .footer-inquiry>.brand .brand-logo{height:110px}
 @media(max-width:760px){.header .brand-logo{height:54px}.footer-inquiry>.brand .brand-logo{height:88px}}
 @media(max-width:365px){.header .brand-logo{height:48px}}
+/* Fourth service card: the track scrolls on every screen size, so the controls always show. */
+.services .carousel-controls{display:flex;align-items:center;gap:12px;margin-top:24px}
+.service-slide-status{font-size:11px;letter-spacing:1.5px;margin-right:12px;white-space:nowrap}
+.service-track:focus-visible{outline:2px solid var(--green);outline-offset:6px}
+#service-track{overflow-y:hidden;overscroll-behavior-x:contain;overscroll-behavior-y:auto}
+.service-card[data-service-card="upholstery-cleaning"]>img{object-position:73% center}
+.card-top>span:last-child{max-width:130px}
+@media(max-width:760px){.services .carousel-controls{gap:7px;margin:0}.service-slide-status{display:none}}

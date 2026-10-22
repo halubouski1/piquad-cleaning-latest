@@ -29,6 +29,12 @@ const nextService = document.querySelector('#services-next');
 function syncServiceButtons() {
   previousService.disabled = track.scrollLeft <= 3;
   nextService.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 3;
+  const cards = track.querySelectorAll('.service-card');
+  const stride = cards[0].getBoundingClientRect().width + (parseFloat(getComputedStyle(track).gap) || 12);
+  const first = Math.min(cards.length, Math.round(track.scrollLeft / stride) + 1);
+  const counter = document.querySelector('#services-counter');
+  const label = `${String(first).padStart(2, '0')} / ${String(cards.length).padStart(2, '0')}`;
+  if (counter.textContent !== label) counter.textContent = label;
 }
 function moveServices(direction) {
   const cardWidth = track.querySelector('.service-card').getBoundingClientRect().width;
@@ -38,6 +44,12 @@ function moveServices(direction) {
 previousService.addEventListener('click', () => moveServices(-1));
 nextService.addEventListener('click', () => moveServices(1));
 track.addEventListener('scroll', syncServiceButtons, { passive: true });
+track.addEventListener('keydown', event => {
+  if (event.target === track && ['ArrowLeft', 'ArrowRight'].includes(event.key)) {
+    event.preventDefault();
+    moveServices(event.key === 'ArrowLeft' ? -1 : 1);
+  }
+});
 window.addEventListener('resize', syncServiceButtons, { passive: true });
 syncServiceButtons();
 
