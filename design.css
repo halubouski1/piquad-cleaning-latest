@@ -9,7 +9,7 @@
 .loader-curtain{position:absolute;inset:0;background:#54775f;clip-path:inset(0);transition:clip-path 1.2s cubic-bezier(.76,0,.24,1)}
 .loader-center{position:absolute;inset:0;display:grid;place-items:center;transition:opacity .35s,transform .7s var(--ease)}
 .loader-emblem{position:relative;width:156px;height:156px;display:grid;place-items:center}
-.loader-symbol{width:53px;height:62px;transform:translateX(3px)}
+.loader-symbol{width:68px;height:62px}
 .loader-orbit{position:absolute;inset:0;width:100%;height:100%;fill:none;transform-origin:center;animation:loader-orbit 2.1s linear infinite}
 .loader-orbit-track{stroke:currentColor;stroke-width:1;opacity:.22}
 .loader-orbit-arc{stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-dasharray:105 459;animation:loader-breathe 2.8s ease-in-out infinite alternate}

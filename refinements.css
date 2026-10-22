@@ -374,7 +374,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--ink)}
  .deep-expanded-title{font-size:clamp(44px,12vw,76px);margin-bottom:21px}
  .deep-story-copy>p{max-width:430px}
  .gallery .gallery-wipe>img{object-position:60% center}
- .loader-emblem{width:138px;height:138px}.loader-symbol{width:47px;height:55px}
+ .loader-emblem{width:138px;height:138px}.loader-symbol{width:60px;height:55px}
 }
 @media(max-height:660px){.deep-expanded-title{font-size:clamp(42px,9.6svh,64px);margin-bottom:16px}.deep-motion .deep-story-copy{bottom:6%}.deep-story-copy>p:not(.eyebrow){line-height:1.6}.deep-story-copy>.button{margin-top:20px}}
 @media(prefers-reduced-motion:reduce){.hero-image-wrap,.hero-bottom{transform:none!important;opacity:1!important}.gallery.is-wiping .gallery-control-group>p{opacity:1;translate:0 0}}
