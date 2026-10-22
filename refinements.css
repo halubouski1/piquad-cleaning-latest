@@ -454,7 +454,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--ink)}
 .trust-facts strong{white-space:nowrap}
 @media(max-width:760px){.trust .trust-facts{grid-template-columns:.7fr 1.3fr 1.2fr}}
 /* Wordmark logo: inherits color from its context (white on the hero, green in the footer). */
-.brand-logo{display:block;height:44px;width:auto;aspect-ratio:1948/600}
-.footer-inquiry>.brand .brand-logo{height:56px}
-@media(max-width:760px){.header .brand-logo{height:36px}.footer-inquiry>.brand .brand-logo{height:46px}}
-@media(max-width:365px){.header .brand-logo{height:31px}}
+.brand-logo{display:block;height:68px;width:auto;aspect-ratio:1952/1458}
+.footer-inquiry>.brand .brand-logo{height:110px}
+@media(max-width:760px){.header .brand-logo{height:54px}.footer-inquiry>.brand .brand-logo{height:88px}}
+@media(max-width:365px){.header .brand-logo{height:48px}}
