@@ -8,7 +8,8 @@ const scrolling = new Lenis({
   syncTouch: false,
   wheelMultiplier: 1,
   respectReducedMotion: true,
-  allowNestedScroll: true,
+  // Only explicitly marked overlays opt out; horizontal cards must not trap wheel input.
+  allowNestedScroll: false,
   anchors: false
 });
 

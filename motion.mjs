@@ -5,7 +5,7 @@ const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const shortLandscape = matchMedia('(max-height: 540px) and (min-width: 650px)');
 const hero = document.querySelector('.hero-scroll');
 const stage = document.querySelector('.hero-stage');
-const heroImage = document.querySelector('#hero-image');
+const heroImage = document.querySelector('#hero-image') || document.querySelector('[data-page-hero] img');
 const firstTitle = document.querySelector('.hero-copy');
 const secondTitle = document.querySelector('.hero-next');
 const progressBar = document.querySelector('#hero-progress');
@@ -30,7 +30,7 @@ function finishIntro(immediate = false) {
 }
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 if (root.classList.contains('intro') && !reducedMotion.matches) {
-  const assetsReady = Promise.allSettled([heroImage.decode(), document.fonts?.ready ?? Promise.resolve()]);
+  const assetsReady = Promise.allSettled([heroImage?.decode() ?? Promise.resolve(), document.fonts?.ready ?? Promise.resolve()]);
   Promise.all([delay(1100), Promise.race([assetsReady, delay(2300)])]).then(() => finishIntro());
 } else finishIntro(true);
 document.querySelector('#skip-intro').addEventListener('click', () => {
@@ -44,17 +44,16 @@ document.querySelector('.skip-link').addEventListener('click', () => finishIntro
 window.addEventListener('pageshow', event => { if (event.persisted) finishIntro(true); });
 
 function resetScene() {
-  heroImage.style.transform = '';
-  firstTitle.style.opacity = '';
-  firstTitle.style.transform = '';
-  secondTitle.style.opacity = '';
-  secondTitle.style.transform = '';
-  progressBar.style.transform = '';
+  if (heroImage) heroImage.style.transform = '';
+  for (const title of [firstTitle, secondTitle]) {
+    if (title) { title.style.opacity = ''; title.style.transform = ''; }
+  }
+  if (progressBar) progressBar.style.transform = '';
   visualScenes.forEach(scene => { scene.querySelectorAll('.visual-image img').forEach(image => { image.style.transform = ''; }); });
 }
 function updateMotionMode() {
   enabled = !reducedMotion.matches && !shortLandscape.matches;
-  root.classList.toggle('scroll-motion', enabled);
+  root.classList.toggle('scroll-motion', enabled && Boolean(hero));
   if (!enabled) resetScene();
   if (reducedMotion.matches) finishIntro(true);
   scheduleFrame();
@@ -62,6 +61,7 @@ function updateMotionMode() {
 function renderFrame() {
   scheduled = false;
   if (!enabled) return;
+  if (hero) {
   const bounds = hero.getBoundingClientRect();
   const duration = Math.max(1, hero.offsetHeight - stage.offsetHeight);
   const state = heroState(-bounds.top / duration);
@@ -71,6 +71,7 @@ function renderFrame() {
   secondTitle.style.opacity = String(state.secondOpacity);
   secondTitle.style.transform = `translate3d(0,${state.secondY}px,0)`;
   progressBar.style.transform = `scaleY(${state.progress})`;
+  }
   const viewport = window.innerHeight;
   visualScenes.forEach(scene => {
     const rect = scene.getBoundingClientRect();

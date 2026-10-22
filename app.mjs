@@ -20,31 +20,35 @@ document.addEventListener('click', event => { if (!event.target.closest('.header
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape' && !mobileNav.hidden) { closeMenu(); menuButton.focus(); }
 });
-window.matchMedia('(min-width: 761px)').addEventListener('change', event => { if (event.matches) closeMenu(); });
+document.querySelector('.header').addEventListener('focusout', () => {
+  requestAnimationFrame(() => { if (!document.activeElement?.closest('.header')) closeMenu(); });
+});
+window.matchMedia('(min-width: 1101px)').addEventListener('change', event => { if (event.matches) closeMenu(); });
 
 // Service cards remain horizontally scrollable by touch, trackpad, or buttons.
 const track = document.querySelector('#service-track');
 const previousService = document.querySelector('#services-prev');
 const nextService = document.querySelector('#services-next');
 function syncServiceButtons() {
+  if (!track) return;
   previousService.disabled = track.scrollLeft <= 3;
   nextService.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 3;
-  const cards = track.querySelectorAll('.service-card');
+  const cards = [...track.querySelectorAll('.service-card')];
   const stride = cards[0].getBoundingClientRect().width + (parseFloat(getComputedStyle(track).gap) || 12);
   const first = Math.min(cards.length, Math.round(track.scrollLeft / stride) + 1);
   const counter = document.querySelector('#services-counter');
   const label = `${String(first).padStart(2, '0')} / ${String(cards.length).padStart(2, '0')}`;
-  if (counter.textContent !== label) counter.textContent = label;
+  if (counter && counter.textContent !== label) counter.textContent = label;
 }
 function moveServices(direction) {
   const cardWidth = track.querySelector('.service-card').getBoundingClientRect().width;
   const gap = parseFloat(getComputedStyle(track).gap) || 12;
   track.scrollBy({ left: (cardWidth + gap) * direction, behavior: reducedMotion.matches ? 'auto' : 'smooth' });
 }
-previousService.addEventListener('click', () => moveServices(-1));
-nextService.addEventListener('click', () => moveServices(1));
-track.addEventListener('scroll', syncServiceButtons, { passive: true });
-track.addEventListener('keydown', event => {
+previousService?.addEventListener('click', () => moveServices(-1));
+nextService?.addEventListener('click', () => moveServices(1));
+track?.addEventListener('scroll', syncServiceButtons, { passive: true });
+track?.addEventListener('keydown', event => {
   if (event.target === track && ['ArrowLeft', 'ArrowRight'].includes(event.key)) {
     event.preventDefault();
     moveServices(event.key === 'ArrowLeft' ? -1 : 1);
@@ -59,7 +63,8 @@ const interiors = [
   { src: 'assets/kitchen.webp', alt: 'Warm, tidy kitchen with soft green cabinets and stone countertops', caption: 'Kitchens: discuss counters, sinks, and high-use areas.', width: 1448, height: 1086 },
   { src: 'assets/move-clean.webp', alt: 'An inviting empty room with moving boxes and natural daylight', caption: 'Moving: share your date, home details, and priorities.', width: 1086, height: 1448 }
 ];
-mountGallery(document.querySelector('.gallery'), interiors, reducedMotion);
+const gallery = document.querySelector('.gallery');
+if (gallery) mountGallery(gallery, interiors, reducedMotion);
 
 // Inquiry preparation happens entirely on the visitor's device.
 const dialog = document.querySelector('#inquiry-dialog');
@@ -69,6 +74,9 @@ const ready = document.querySelector('#inquiry-ready');
 const preview = document.querySelector('#message-preview');
 const status = document.querySelector('#copy-status');
 let inquiryTrigger;
+const defaultService = document.body.dataset.service || 'I’d like some guidance';
+form.elements.service.value = defaultService;
+if (contactForm) contactForm.elements.service.value = defaultService;
 function showForm() { form.hidden = false; ready.hidden = true; status.textContent = ''; }
 function openDialog(trigger) {
   closeMenu();
@@ -79,7 +87,7 @@ function openDialog(trigger) {
 }
 document.querySelectorAll('[data-inquiry]').forEach(button => {
   button.addEventListener('click', () => {
-    if (button.dataset.service) form.elements.service.value = button.dataset.service;
+    form.elements.service.value = button.dataset.service || defaultService;
     showForm();
     openDialog(button);
     document.querySelector('.dialog-close').focus({ preventScroll: true });
@@ -108,7 +116,7 @@ function prepareMessage(sourceForm, trigger) {
   }
   if (sourceForm !== form) {
     for (const field of ['name', 'location', 'service']) form.elements[field].value = data[field];
-    form.elements.notes.value = '';
+    form.elements.notes.value = data.notes || '';
     openDialog(trigger);
   }
   preview.value = makeInquiry(data);
@@ -121,7 +129,7 @@ function prepareMessage(sourceForm, trigger) {
   document.querySelector('#sms-link').focus({ preventScroll: true });
 }
 form.addEventListener('submit', event => { event.preventDefault(); prepareMessage(form, event.submitter); });
-contactForm.addEventListener('submit', event => { event.preventDefault(); prepareMessage(contactForm, event.submitter); });
+contactForm?.addEventListener('submit', event => { event.preventDefault(); prepareMessage(contactForm, event.submitter); });
 document.querySelector('#edit-inquiry').addEventListener('click', () => { showForm(); form.elements.name.focus(); });
 document.querySelector('#copy-inquiry').addEventListener('click', async () => {
   try { await navigator.clipboard.writeText(preview.value); status.textContent = 'Message copied. It’s ready to paste into your conversation.'; }

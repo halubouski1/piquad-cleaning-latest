@@ -4,7 +4,7 @@ export function counterValue(target, progress) {
   return Math.min(target, Math.floor(target * eased + 1e-8));
 }
 
-if (typeof document !== 'undefined') {
+if (typeof document !== 'undefined' && document.querySelector('[data-counter-group]')) {
   const group = document.querySelector('[data-counter-group]');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const counters = [...group.querySelectorAll('[data-count-to]')].map(element => ({

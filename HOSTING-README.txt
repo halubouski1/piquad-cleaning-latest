@@ -1,11 +1,9 @@
-Piquad Cleaning — latest approved version, October 12, 2026
+PIQUAD CLEANING — Latest version, October 16, 2026
 
-Upload and extract the CONTENTS of this ZIP into the test website document root (usually public_html, www, or htdocs). index.html must be directly inside that folder.
+Upload the contents of this archive into your hosting document root. index.html must be in the root. Preserve the assets/ and vendor/ folders. No build step or database is needed.
 
-This is a static website. No installation, build, Node.js, database, or API keys are required. All photographs, fonts, scripts, and styles are included.
+Serve .mjs files as JavaScript. The included .htaccess configures this on compatible Apache hosting. Update canonical links, sitemap.xml and robots.txt when moving to a final domain.
 
-Open through the hosting URL, not by double-clicking index.html. The server must serve .mjs files as JavaScript; the included .htaccess handles this on Apache when mod_mime and overrides are enabled.
+Includes all 8 pages, fullscreen service heroes, new inner-page photos, direct navigation, smooth-scroll fix, and corrected left/right service-carousel arrows.
 
-The inquiry form prepares an SMS for the visitor to review and send. It does not send email or store inquiries on a server.
-
-The social-sharing image metadata still points to the existing published Piquad site; update it when a final custom domain is assigned.
+The inquiry form prepares an SMS for the visitor to review and send. It does not submit or store inquiries automatically. AI photographs are illustrative.

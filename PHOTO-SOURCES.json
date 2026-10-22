@@ -1,0 +1,63 @@
+{
+  "created": "2026-10-16",
+  "method": "Built-in image generation",
+  "usage": "Illustrative scenes, not actual Piquad staff or projects. Separate from all homepage photographs.",
+  "assets": [
+    {
+      "file": "dist/assets/regular-page.webp",
+      "nativeDimensions": [
+        1672,
+        941
+      ],
+      "prompt": "Use case: photorealistic-natural. Asset type: high-end residential cleaning website photograph, original illustrative scene. Create one cohesive landscape photograph, 16:9 wide composition, highest available resolution, natural daylight, soft realistic shadows, quiet warm whites and muted eucalyptus green, real material texture, refined American home. Editorial architectural photography, believable scale, no text, no logos, no watermark, no collage, no excessive bloom, no plastic CGI look. Leave calm negative space in left third for overlay headline; main visual interest centered/right, useful when cropped on mobile. An adult professional woman wearing a muted sage green short sleeve uniform carefully wipes an ivory quartz counter with a folded microfiber cloth in a bright contemporary American kitchen. White oak cabinets and understated cream backsplash, tall windows, modest houseplants. Medium-wide eye-level scene, the woman and counter on right, different domestic kitchen with rectangular windows. Professional calm working moment."
+    },
+    {
+      "file": "dist/assets/deep-page.webp",
+      "nativeDimensions": [
+        1672,
+        941
+      ],
+      "prompt": "Use case: photorealistic-natural. Asset type: high-end residential cleaning website photograph, original illustrative scene. Create one cohesive landscape photograph, 16:9 wide composition, highest available resolution, natural daylight, soft realistic shadows, quiet warm whites and muted eucalyptus green, real material texture, refined American home. Editorial architectural photography, believable scale, no text, no logos, no watermark, no collage, no excessive bloom, no plastic CGI look. Leave calm negative space in left third for overlay headline; main visual interest centered/right, useful when cropped on mobile. An elegant pristine bathroom with pale travertine floor, off-white tiled walls, brushed nickel fixtures, a transparent glass shower and oak vanity, soft morning light from a large frosted window. An adult professional cleaner in muted sage uniform on the right cleaning the outside of shower glass with a small folded microfiber cloth, anatomically natural hand and arm. Camera wide at eye level. No dramatic wet floor, no foam."
+    },
+    {
+      "file": "dist/assets/moving-page.webp",
+      "nativeDimensions": [
+        1672,
+        941
+      ],
+      "prompt": "Use case: photorealistic-natural. Asset type: high-end residential cleaning website photograph, original illustrative scene. Create one cohesive landscape photograph, 16:9 wide composition, highest available resolution, natural daylight, soft realistic shadows, quiet warm whites and muted eucalyptus green, real material texture, refined American home. Editorial architectural photography, believable scale, no text, no logos, no watermark, no collage, no excessive bloom, no plastic CGI look. Leave calm negative space in left third for overlay headline; main visual interest centered/right, useful when cropped on mobile. A beautiful unfurnished Cleveland-area style American house just ready for moving day: empty sunlit living and dining room, broad window with leafy garden, pale oak floor, white walls, architectural white trim, a few neatly stacked unbranded cardboard moving boxes and one houseplant near the far right doorway. No people, no furniture, no text. Wide spacious composition looking across the floor from the entry."
+    },
+    {
+      "file": "dist/assets/furniture-page.webp",
+      "nativeDimensions": [
+        1672,
+        941
+      ],
+      "prompt": "Use case: photorealistic-natural. Asset type: high-end residential cleaning website photograph, original illustrative scene. Create one cohesive landscape photograph, 16:9 wide composition, highest available resolution, natural daylight, soft realistic shadows, quiet warm whites and muted eucalyptus green, real material texture, refined American home. Editorial architectural photography, believable scale, no text, no logos, no watermark, no collage, no excessive bloom, no plastic CGI look. Leave calm negative space in left third for overlay headline; main visual interest centered/right, useful when cropped on mobile. A quiet lived-in American living room with a beautiful rounded taupe linen sectional sofa on the right, cushions arranged naturally, natural wood side table, understated ceramic vase and a large window with sheer curtains. Beautiful close-to-medium wide editorial photograph, emphasize the tactile linen upholstery and a softly lit comfortable home. No people, no cleaning tools, no text. Sofa clean and believable with natural folds."
+    },
+    {
+      "file": "dist/assets/about-page.webp",
+      "nativeDimensions": [
+        1672,
+        941
+      ],
+      "prompt": "Use case: photorealistic-natural. Asset type: high-end residential cleaning website photograph, original illustrative scene. Create one cohesive landscape photograph, 16:9 wide composition, highest available resolution, natural daylight, soft realistic shadows, quiet warm whites and muted eucalyptus green, real material texture, refined American home. Editorial architectural photography, believable scale, no text, no logos, no watermark, no collage, no excessive bloom, no plastic CGI look. Leave calm negative space in left third for overlay headline; main visual interest centered/right, useful when cropped on mobile. Two adult professional residential cleaners in muted eucalyptus green polos and dark green trousers working in a bright American dining room. One carefully wipes a white oak dining table in the right foreground, the other slightly farther back tidies a sideboard. Different people from any prior image. Candid natural teamwork, no posing, no eye contact with camera. Sunlit large windows, simple furniture, warm whites, believable human anatomy. Wide photo."
+    },
+    {
+      "file": "dist/assets/contact-page.webp",
+      "nativeDimensions": [
+        1672,
+        941
+      ],
+      "prompt": "Use case: photorealistic-natural. Asset type: high-end residential cleaning website photograph, original illustrative scene. Create one cohesive landscape photograph, 16:9 wide composition, highest available resolution, natural daylight, soft realistic shadows, quiet warm whites and muted eucalyptus green, real material texture, refined American home. Editorial architectural photography, believable scale, no text, no logos, no watermark, no collage, no excessive bloom, no plastic CGI look. Leave calm negative space in left third for overlay headline; main visual interest centered/right, useful when cropped on mobile. An inviting sunny American home entryway opening to a comfortable sitting nook, arched doorway, pale oak bench and coat hooks, small upholstered armchair in cream, restrained leafy plant, warm white walls, subtle sage accent cushion. No people, no moving boxes, no text. Architectural editorial photograph with natural daylight and airy depth, garden glimpsed through a window on right."
+    },
+    {
+      "file": "dist/assets/deep-page-detail.webp",
+      "nativeDimensions": [
+        1672,
+        941
+      ],
+      "prompt": "Use case: photorealistic-natural. Asset type: high-end residential cleaning website photograph, original illustrative scene. Create one cohesive landscape photograph, 16:9 wide composition, highest available resolution, natural daylight, soft realistic shadows, quiet warm whites and muted eucalyptus green, real material texture, refined American home. Editorial architectural photography, believable scale, no text, no logos, no watermark, no collage, no excessive bloom, no plastic CGI look. Leave calm negative space in left third for overlay headline; main visual interest centered/right, useful when cropped on mobile. A meticulous close-to-medium editorial photograph of a clean bright bathroom vanity, ivory stone sink, brushed nickel faucet, folded white hand towel, pale oak drawer fronts, muted sage ceramic vessel with a small fresh stem. Soft natural daylight falls across the stone from a tall window on the right, beautiful subtle surface texture, no people, no cleaning bottles, no text. Wide landscape composition, plenty of room around the vanity."
+    }
+  ]
+}

@@ -34,11 +34,11 @@ if (typeof document !== 'undefined') {
   const tallEnough = matchMedia('(min-height: 560px)');
   const compact = matchMedia('(max-width: 760px)');
   const story = document.querySelector('.deep-scroll');
-  const stage = story.querySelector('.deep-stage');
-  const photo = story.querySelector('.deep-story-photo');
-  const intro = story.querySelector('.deep-intro');
-  const copy = story.querySelector('.deep-story-copy');
-  const shade = story.querySelector('.deep-story-shade');
+  const stage = story?.querySelector('.deep-stage');
+  const photo = story?.querySelector('.deep-story-photo');
+  const intro = story?.querySelector('.deep-intro');
+  const copy = story?.querySelector('.deep-story-copy');
+  const shade = story?.querySelector('.deep-story-shade');
   const meters = [...document.querySelectorAll('[data-scroll-fill]')].map(section => ({
     section,
     meter: section.querySelector('.scroll-meter'),
@@ -48,8 +48,8 @@ if (typeof document !== 'undefined') {
   let storyEnabled = false;
 
   function resetStory() {
-    for (const element of [photo, intro, copy, shade]) element.removeAttribute('style');
-    copy.classList.remove('is-readable');
+    for (const element of [photo, intro, copy, shade]) element?.removeAttribute('style');
+    copy?.classList.remove('is-readable');
   }
   function render() {
     queued = false;
@@ -85,7 +85,7 @@ if (typeof document !== 'undefined') {
     requestAnimationFrame(render);
   }
   function updateMode() {
-    storyEnabled = !reduced.matches && tallEnough.matches;
+    storyEnabled = Boolean(story) && !reduced.matches && tallEnough.matches;
     root.classList.toggle('deep-motion', storyEnabled);
     if (!storyEnabled) resetStory();
     schedule();
