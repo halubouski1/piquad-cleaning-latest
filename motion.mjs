@@ -9,7 +9,7 @@ const heroImage = document.querySelector('#hero-image') || document.querySelecto
 const firstTitle = document.querySelector('.hero-copy');
 const secondTitle = document.querySelector('.hero-next');
 const progressBar = document.querySelector('#hero-progress');
-const visualScenes = [...document.querySelectorAll('.full-visual')];
+const visualScenes = [...document.querySelectorAll('.full-visual')].map(scene => ({ scene, images: [...scene.querySelectorAll('.visual-image img')] }));
 let enabled = false;
 let scheduled = false;
 
@@ -49,7 +49,7 @@ function resetScene() {
     if (title) { title.style.opacity = ''; title.style.transform = ''; }
   }
   if (progressBar) progressBar.style.transform = '';
-  visualScenes.forEach(scene => { scene.querySelectorAll('.visual-image img').forEach(image => { image.style.transform = ''; }); });
+  visualScenes.forEach(({ images }) => { images.forEach(image => { image.style.transform = ''; }); });
 }
 function updateMotionMode() {
   enabled = !reducedMotion.matches && !shortLandscape.matches;
@@ -73,11 +73,11 @@ function renderFrame() {
   progressBar.style.transform = `scaleY(${state.progress})`;
   }
   const viewport = window.innerHeight;
-  visualScenes.forEach(scene => {
+  visualScenes.forEach(({ scene, images }) => {
     const rect = scene.getBoundingClientRect();
     if (rect.bottom < -100 || rect.top > viewport + 100) return;
     const relative = clamp((viewport / 2 - (rect.top + rect.height / 2)) / viewport, -1, 1);
-    scene.querySelectorAll('.visual-image img').forEach(image => { image.style.transform = `translate3d(0,${relative * 24}px,0) scale(1.07)`; });
+    images.forEach(image => { image.style.transform = `translate3d(0,${relative * 24}px,0) scale(1.07)`; });
   });
 }
 function scheduleFrame() {

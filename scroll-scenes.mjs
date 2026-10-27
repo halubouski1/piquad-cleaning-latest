@@ -36,6 +36,7 @@ if (typeof document !== 'undefined') {
   const story = document.querySelector('.deep-scroll');
   const stage = story?.querySelector('.deep-stage');
   const photo = story?.querySelector('.deep-story-photo');
+  const photoImage = photo?.querySelector('img');
   const intro = story?.querySelector('.deep-intro');
   const copy = story?.querySelector('.deep-story-copy');
   const shade = story?.querySelector('.deep-story-shade');
@@ -48,7 +49,7 @@ if (typeof document !== 'undefined') {
   let storyEnabled = false;
 
   function resetStory() {
-    for (const element of [photo, intro, copy, shade]) element?.removeAttribute('style');
+    for (const element of [photo, photoImage, intro, copy, shade]) element?.removeAttribute('style');
     copy?.classList.remove('is-readable');
   }
   function render() {
@@ -58,12 +59,14 @@ if (typeof document !== 'undefined') {
       const bounds = story.getBoundingClientRect();
       if (bounds.bottom > -100 && bounds.top < viewport + 100) {
         const progress = clamp(-bounds.top / Math.max(1, story.offsetHeight - stage.offsetHeight), 0, 1);
-        const frame = deepSceneState(progress, stage.clientWidth, stage.clientHeight);
-        photo.style.left = `${frame.left}px`;
-        photo.style.top = `${frame.top}px`;
-        photo.style.width = `${frame.width}px`;
-        photo.style.height = `${frame.height}px`;
-        photo.style.borderRadius = `${frame.radius}px`;
+        const width = stage.clientWidth;
+        const height = stage.clientHeight;
+        const frame = deepSceneState(progress, width, height);
+        // The photo stays full-size; clipping it avoids per-frame layout and image resampling.
+        const right = width - frame.left - frame.width;
+        const bottom = height - frame.top - frame.height;
+        photo.style.clipPath = `inset(${frame.top}px ${right}px ${bottom}px ${frame.left}px round ${frame.radius}px)`;
+        photoImage.style.transform = `scale(${1 + 0.12 * (1 - frame.width / width)})`;
         intro.style.opacity = String(frame.introOpacity);
         intro.style.transform = `translate3d(0,${frame.introY}px,0)`;
         copy.style.opacity = String(frame.copyOpacity);

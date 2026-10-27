@@ -453,8 +453,13 @@ input:focus,select:focus,textarea:focus{border-color:var(--ink)}
 /* Four-digit client count: keep "1000+" on one line. */
 .trust-facts strong{white-space:nowrap}
 @media(max-width:760px){.trust .trust-facts{grid-template-columns:.7fr 1.3fr 1.2fr}}
-/* Wordmark logo: inherits color from its context (white on the hero, green in the footer). */
-.brand-logo{display:block;height:68px;width:auto;aspect-ratio:1952/1458}
-.footer-inquiry>.brand .brand-logo{height:110px}
-@media(max-width:760px){.header .brand-logo{height:54px}.footer-inquiry>.brand .brand-logo{height:88px}}
-@media(max-width:365px){.header .brand-logo{height:48px}}
+/* Wordmark logo: inherits color from its context; an explicit width keeps Safari from falling back to 300x150. */
+.brand-logo{--logo-h:68px;display:block;height:var(--logo-h);width:calc(var(--logo-h) * 1952 / 1458);flex-shrink:0;overflow:visible}
+.footer-inquiry>.brand .brand-logo{--logo-h:110px}
+@media(max-width:760px){.header .brand-logo{--logo-h:54px}.footer-inquiry>.brand .brand-logo{--logo-h:88px}}
+@media(max-width:365px){.header .brand-logo{--logo-h:48px}}
+/* Deep-clean scene: the photo fills the stage and is revealed by clip-path, so scrolling never relayouts it. */
+.deep-motion .deep-story-photo{left:0;top:0;width:100%;height:100%;max-height:none;border-radius:0;will-change:clip-path}
+.deep-motion .deep-story-photo>img{will-change:transform}
+/* Live blur over the moving hero is costly on phones; a translucent fill reads the same. */
+@media(max-width:760px){.button-glass{-webkit-backdrop-filter:none;backdrop-filter:none;background:#1f382a59}}
